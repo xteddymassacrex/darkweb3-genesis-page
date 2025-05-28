@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import GameCategory from "./pages/GameCategory";
 import ServiceDetail from "./pages/ServiceDetail";
 import Checkout from "./pages/Checkout";
+import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/game/:gameId" element={<GameCategory />} />
           <Route path="/service/:serviceId" element={<ServiceDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/join-us" element={<JoinUs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
