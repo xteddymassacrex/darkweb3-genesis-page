@@ -1,5 +1,5 @@
 
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Shield, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -14,20 +14,20 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-dark-800/50 border border-neon-blue/30 text-sm text-neon-blue mb-8 animate-glow">
-            <span className="mr-2">🚀</span>
-            Next-Gen Web3 Solutions
+            <Shield className="mr-2" size={16} />
+            100% Безопасные услуги
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="block text-white">Elevate Your</span>
-            <span className="block glow-text">Digital Presence</span>
+            <span className="block text-white">Профессиональный</span>
+            <span className="block glow-text">Boost & Carry</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Transform your vision into reality with cutting-edge Web3 technology, 
-            stunning design, and unparalleled performance.
+            Поднимите свой ранг в любимых играх с помощью топовых игроков. 
+            Быстро, безопасно и с гарантией результата.
           </p>
 
           {/* CTA Buttons */}
@@ -36,7 +36,7 @@ const Hero = () => {
               size="lg" 
               className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white px-8 py-4 text-lg font-semibold transition-all duration-300 glow-border group"
             >
-              Start Your Journey
+              Выбрать игру
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Button>
             
@@ -46,23 +46,38 @@ const Hero = () => {
               className="border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 px-8 py-4 text-lg font-semibold transition-all duration-300 group"
             >
               <Play className="mr-2 group-hover:scale-110 transition-transform" size={20} />
-              Watch Demo
+              Как это работает
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold glow-text mb-2">500+</div>
-              <div className="text-gray-400">Projects Delivered</div>
+            <div className="flex items-center justify-center text-center">
+              <div className="mr-3">
+                <Shield className="text-green-400" size={24} />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white">100%</div>
+                <div className="text-gray-400 text-sm">Безопасность</div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold glow-text mb-2">99%</div>
-              <div className="text-gray-400">Client Satisfaction</div>
+            <div className="flex items-center justify-center text-center">
+              <div className="mr-3">
+                <Clock className="text-blue-400" size={24} />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white">15 мин</div>
+                <div className="text-gray-400 text-sm">Старт работы</div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold glow-text mb-2">24/7</div>
-              <div className="text-gray-400">Support Available</div>
+            <div className="flex items-center justify-center text-center">
+              <div className="mr-3">
+                <span className="text-purple-400 text-2xl">★</span>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white">50k+</div>
+                <div className="text-gray-400 text-sm">Заказов</div>
+              </div>
             </div>
           </div>
         </div>

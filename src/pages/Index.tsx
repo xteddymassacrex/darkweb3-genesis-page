@@ -1,7 +1,10 @@
 
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import GameCategories from '@/components/GameCategories';
+import ServiceAdvantages from '@/components/ServiceAdvantages';
+import CustomerReviews from '@/components/CustomerReviews';
+import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -9,7 +12,10 @@ const Index = () => {
     <div className="min-h-screen bg-dark-900">
       <Navigation />
       <Hero />
-      <Features />
+      <GameCategories />
+      <ServiceAdvantages />
+      <CustomerReviews />
+      <FAQ />
       <Footer />
     </div>
   );

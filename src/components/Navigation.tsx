@@ -1,25 +1,26 @@
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search, ShoppingCart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Игры', href: '#games' },
+    { name: 'Услуги', href: '#services' },
+    { name: 'Отзывы', href: '#reviews' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Контакты', href: '#contact' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-900/95 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold glow-text">LFCarry</span>
+            <span className="text-2xl font-bold glow-text">GameBoost</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -37,10 +38,42 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Right side buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Search */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-300 hover:text-neon-blue"
+            >
+              <Search size={20} />
+            </Button>
+
+            {/* Cart */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-300 hover:text-neon-blue relative"
+            >
+              <ShoppingCart size={20} />
+              {/* Cart badge */}
+              <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                2
+              </span>
+            </Button>
+
+            {/* Login/Profile */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-300 hover:text-neon-blue"
+            >
+              <User size={20} />
+            </Button>
+
+            {/* CTA Button */}
             <Button className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 glow-border">
-              Get Started
+              Начать
             </Button>
           </div>
 
@@ -69,9 +102,38 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="pt-2">
+              
+              {/* Mobile buttons */}
+              <div className="pt-4 space-y-2">
+                <div className="flex items-center space-x-2 px-3">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-600 text-gray-300 flex-1"
+                  >
+                    <Search size={16} className="mr-2" />
+                    Поиск
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-600 text-gray-300 relative"
+                  >
+                    <ShoppingCart size={16} />
+                    <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                      2
+                    </span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-600 text-gray-300"
+                  >
+                    <User size={16} />
+                  </Button>
+                </div>
                 <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
-                  Get Started
+                  Начать
                 </Button>
               </div>
             </div>
