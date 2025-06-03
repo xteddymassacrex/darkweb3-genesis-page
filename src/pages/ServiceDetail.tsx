@@ -4,10 +4,31 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Slider } from '@/components/ui/slider';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 import { ArrowLeft, Shield, Clock, Star, Users, CheckCircle, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
+  
+  // State for options
+  const [currentRank, setCurrentRank] = useState('silver-1');
+  const [targetRank, setTargetRank] = useState('platinum-4');
+  const [additionalOptions, setAdditionalOptions] = useState({
+    stream: false,
+    vpnProtection: true,
+    priorityQueue: false,
+    soloQueue: false,
+    duoQueue: true,
+    specificAgents: false
+  });
+  const [playTimeRange, setPlayTimeRange] = useState([2, 6]); // hours per day
+  const [budgetRange, setBudgetRange] = useState([4500]); // single value slider
+  const [agentCount, setAgentCount] = useState([3]); // number of agents to play
+  const [gameMode, setGameMode] = useState('competitive');
 
   const service = {
     id: 1,
@@ -42,6 +63,27 @@ const ServiceDetail = () => {
       rank: "Grandmaster",
       avatar: "👨‍💻"
     }
+  };
+
+  const handleOptionChange = (option: string, checked: boolean) => {
+    setAdditionalOptions(prev => ({
+      ...prev,
+      [option]: checked
+    }));
+  };
+
+  const calculatePrice = () => {
+    let basePrice = 4500;
+    if (additionalOptions.stream) basePrice += 500;
+    if (additionalOptions.priorityQueue) basePrice += 300;
+    if (additionalOptions.soloQueue) basePrice += 200;
+    if (additionalOptions.specificAgents) basePrice += 400;
+    
+    // Adjust based on time range
+    const timeMultiplier = (playTimeRange[1] - playTimeRange[0]) * 0.1;
+    basePrice += basePrice * timeMultiplier;
+    
+    return basePrice.toLocaleString('ru-RU');
   };
 
   return (
@@ -154,11 +196,11 @@ const ServiceDetail = () => {
             {/* Sidebar - Order Form */}
             <div className="lg:col-span-1">
               <Card className="bg-dark-800/50 border-dark-600 sticky top-8">
-                <CardContent className="p-6">
+                <CardContent className="p-6 space-y-6">
                   {/* Price */}
-                  <div className="mb-6">
+                  <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl font-bold glow-text">{service.price}</span>
+                      <span className="text-3xl font-bold glow-text">{calculatePrice()}₽</span>
                       {service.originalPrice && (
                         <span className="text-gray-500 line-through text-xl">{service.originalPrice}</span>
                       )}
@@ -170,38 +212,173 @@ const ServiceDetail = () => {
                     )}
                   </div>
 
-                  {/* Options */}
-                  <div className="space-y-4 mb-6">
+                  {/* Rank Selection */}
+                  <div className="space-y-4">
                     <div>
-                      <label className="block text-white font-medium mb-2">Текущий ранг</label>
-                      <select className="w-full bg-dark-700 border border-dark-600 text-white px-3 py-2 rounded">
-                        <option>Silver I</option>
-                        <option>Silver II</option>
-                        <option>Gold IV</option>
-                        <option>Gold III</option>
+                      <Label className="text-white font-medium mb-2 block">Текущий ранг</Label>
+                      <select 
+                        value={currentRank}
+                        onChange={(e) => setCurrentRank(e.target.value)}
+                        className="w-full bg-dark-700 border border-dark-600 text-white px-3 py-2 rounded"
+                      >
+                        <option value="silver-1">Silver I</option>
+                        <option value="silver-2">Silver II</option>
+                        <option value="gold-4">Gold IV</option>
+                        <option value="gold-3">Gold III</option>
                       </select>
                     </div>
                     
                     <div>
-                      <label className="block text-white font-medium mb-2">Желаемый ранг</label>
-                      <select className="w-full bg-dark-700 border border-dark-600 text-white px-3 py-2 rounded">
-                        <option>Platinum IV</option>
-                        <option>Platinum III</option>
-                        <option>Platinum II</option>
-                        <option>Platinum I</option>
+                      <Label className="text-white font-medium mb-2 block">Желаемый ранг</Label>
+                      <select 
+                        value={targetRank}
+                        onChange={(e) => setTargetRank(e.target.value)}
+                        className="w-full bg-dark-700 border border-dark-600 text-white px-3 py-2 rounded"
+                      >
+                        <option value="platinum-4">Platinum IV</option>
+                        <option value="platinum-3">Platinum III</option>
+                        <option value="platinum-2">Platinum II</option>
+                        <option value="platinum-1">Platinum I</option>
                       </select>
                     </div>
+                  </div>
 
-                    <div className="flex items-center">
-                      <input type="checkbox" id="stream" className="mr-2" />
-                      <label htmlFor="stream" className="text-gray-300 text-sm">
-                        Стрим процесса (+500₽)
-                      </label>
+                  {/* Game Mode Selection */}
+                  <div>
+                    <Label className="text-white font-medium mb-3 block">Режим игры</Label>
+                    <RadioGroup value={gameMode} onValueChange={setGameMode}>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="competitive" id="competitive" />
+                        <Label htmlFor="competitive" className="text-gray-300">Соревновательный</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="ranked" id="ranked" />
+                        <Label htmlFor="ranked" className="text-gray-300">Рейтинговый</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="premier" id="premier" />
+                        <Label htmlFor="premier" className="text-gray-300">Премьер (+200₽)</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  {/* Queue Type Selection */}
+                  <div>
+                    <Label className="text-white font-medium mb-3 block">Тип очереди</Label>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="soloQueue" 
+                          checked={additionalOptions.soloQueue}
+                          onCheckedChange={(checked) => handleOptionChange('soloQueue', checked as boolean)}
+                        />
+                        <Label htmlFor="soloQueue" className="text-gray-300">
+                          Соло очередь (+200₽)
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="duoQueue" 
+                          checked={additionalOptions.duoQueue}
+                          onCheckedChange={(checked) => handleOptionChange('duoQueue', checked as boolean)}
+                        />
+                        <Label htmlFor="duoQueue" className="text-gray-300">
+                          Дуо очередь
+                        </Label>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Play Time Range */}
+                  <div>
+                    <Label className="text-white font-medium mb-3 block">
+                      Время игры в день: {playTimeRange[0]}-{playTimeRange[1]} часов
+                    </Label>
+                    <Slider
+                      value={playTimeRange}
+                      onValueChange={setPlayTimeRange}
+                      max={12}
+                      min={1}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                      <span>1 час</span>
+                      <span>12 часов</span>
+                    </div>
+                  </div>
+
+                  {/* Number of Agents */}
+                  <div>
+                    <Label className="text-white font-medium mb-3 block">
+                      Количество агентов: {agentCount[0]}
+                    </Label>
+                    <Slider
+                      value={agentCount}
+                      onValueChange={setAgentCount}
+                      max={5}
+                      min={1}
+                      step={1}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                      <span>1 агент</span>
+                      <span>5 агентов</span>
+                    </div>
+                  </div>
+
+                  {/* Additional Options */}
+                  <div>
+                    <Label className="text-white font-medium mb-3 block">Дополнительные опции</Label>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="stream" 
+                          checked={additionalOptions.stream}
+                          onCheckedChange={(checked) => handleOptionChange('stream', checked as boolean)}
+                        />
+                        <Label htmlFor="stream" className="text-gray-300">
+                          Стрим процесса (+500₽)
+                        </Label>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="vpnProtection" 
+                          checked={additionalOptions.vpnProtection}
+                          onCheckedChange={(checked) => handleOptionChange('vpnProtection', checked as boolean)}
+                        />
+                        <Label htmlFor="vpnProtection" className="text-gray-300">
+                          VPN защита (включено)
+                        </Label>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="priorityQueue" 
+                          checked={additionalOptions.priorityQueue}
+                          onCheckedChange={(checked) => handleOptionChange('priorityQueue', checked as boolean)}
+                        />
+                        <Label htmlFor="priorityQueue" className="text-gray-300">
+                          Приоритетная очередь (+300₽)
+                        </Label>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="specificAgents" 
+                          checked={additionalOptions.specificAgents}
+                          onCheckedChange={(checked) => handleOptionChange('specificAgents', checked as boolean)}
+                        />
+                        <Label htmlFor="specificAgents" className="text-gray-300">
+                          Игра на определенных агентах (+400₽)
+                        </Label>
+                      </div>
                     </div>
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 pt-4">
                     <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-lg py-3">
                       Заказать сейчас
                     </Button>
@@ -211,7 +388,7 @@ const ServiceDetail = () => {
                   </div>
 
                   {/* Trust Indicators */}
-                  <div className="mt-6 pt-6 border-t border-dark-600">
+                  <div className="pt-6 border-t border-dark-600">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
                         <Shield className="text-green-400 mx-auto mb-1" size={20} />
