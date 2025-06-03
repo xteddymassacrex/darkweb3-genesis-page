@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { Menu, X, Search, ShoppingCart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useUser } from '@/context/UserContext';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { getTotalItems, setIsCartOpen, user } = useUser();
 
   const navItems = [
     { name: 'Игры', href: '#games' },
@@ -65,23 +67,33 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="icon"
+              onClick={() => setIsCartOpen(true)}
               className="text-gray-300 hover:text-neon-blue relative"
             >
               <ShoppingCart size={20} />
-              {/* Cart badge */}
-              <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                2
-              </span>
+              {getTotalItems() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {getTotalItems()}
+                </span>
+              )}
             </Button>
 
-            {/* Login/Profile */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-gray-300 hover:text-neon-blue"
+            {/* User Profile */}
+            <Link
+              to="/dashboard"
+              className="flex items-center space-x-2 text-gray-300 hover:text-neon-blue transition-colors"
             >
-              <User size={20} />
-            </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-gray-300 hover:text-neon-blue"
+              >
+                <User size={20} />
+              </Button>
+              {user && (
+                <span className="text-sm font-medium">{user.name}</span>
+              )}
+            </Link>
 
             {/* CTA Button */}
             <Button className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 glow-border">
@@ -140,20 +152,28 @@ const Navigation = () => {
                   <Button
                     variant="outline"
                     size="sm"
+                    onClick={() => {
+                      setIsCartOpen(true);
+                      setIsOpen(false);
+                    }}
                     className="border-gray-600 text-gray-300 relative"
                   >
                     <ShoppingCart size={16} />
-                    <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                      2
-                    </span>
+                    {getTotalItems() > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-neon-purple text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                        {getTotalItems()}
+                      </span>
+                    )}
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gray-600 text-gray-300"
-                  >
-                    <User size={16} />
-                  </Button>
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-gray-600 text-gray-300"
+                    >
+                      <User size={16} />
+                    </Button>
+                  </Link>
                 </div>
                 <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
                   Начать
