@@ -31,11 +31,11 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-1">
             <div className="mb-4">
-              <span className="text-2xl font-bold glow-text">LFCarry</span>
+              <span className="text-2xl font-bold glow-text">TeamPlay</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Transforming the digital landscape with innovative Web3 solutions 
-              and cutting-edge technology.
+              Объединяем игроков в команды для достижения новых высот в киберспорте.
+              Играй вместе, развивайся и побеждай!
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="border-t border-dark-600 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 LFCarry. All rights reserved.
+              © 2024 TeamPlay. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-neon-blue text-sm transition-colors duration-300">
