@@ -16,19 +16,19 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-dark-800/50 border border-neon-blue/30 text-sm text-neon-blue mb-8 animate-glow">
             <Shield className="mr-2" size={16} />
-            100% Командная игра
+            100% Team Play
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="block text-white">Играй в команде</span>
-            <span className="block glow-text">с профессионалами</span>
+            <span className="block text-white">Play in a team</span>
+            <span className="block glow-text">with professionals</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Присоединяйся к команде профессиональных игроков. 
-            Играй вместе, развивайся и достигай новых высот в киберспорте.
+            Join a team of professional players. 
+            Play together, grow and reach new heights in esports.
           </p>
 
           {/* CTA Buttons */}
@@ -38,7 +38,7 @@ const Hero = () => {
                 size="lg" 
                 className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white px-8 py-4 text-lg font-semibold transition-all duration-300 glow-border group"
               >
-                Найти команду
+                Find a Team
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
             </Link>
@@ -49,7 +49,7 @@ const Hero = () => {
               className="border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 px-8 py-4 text-lg font-semibold transition-all duration-300 group"
             >
               <Play className="mr-2 group-hover:scale-110 transition-transform" size={20} />
-              Как это работает
+              How it Works
             </Button>
           </div>
 
@@ -61,7 +61,7 @@ const Hero = () => {
               </div>
               <div>
                 <div className="text-lg font-bold text-white">100%</div>
-                <div className="text-gray-400 text-sm">Честная игра</div>
+                <div className="text-gray-400 text-sm">Fair Play</div>
               </div>
             </div>
             <div className="flex items-center justify-center text-center">
@@ -70,7 +70,7 @@ const Hero = () => {
               </div>
               <div>
                 <div className="text-lg font-bold text-white">24/7</div>
-                <div className="text-gray-400 text-sm">Поиск команды</div>
+                <div className="text-gray-400 text-sm">Team Finder</div>
               </div>
             </div>
             <div className="flex items-center justify-center text-center">
@@ -79,7 +79,7 @@ const Hero = () => {
               </div>
               <div>
                 <div className="text-lg font-bold text-white">10k+</div>
-                <div className="text-gray-400 text-sm">Игроков</div>
+                <div className="text-gray-400 text-sm">Players</div>
               </div>
             </div>
           </div>

@@ -29,108 +29,108 @@ const JoinUs = () => {
   const benefits = [
     {
       icon: <DollarSign className="w-8 h-8 text-neon-blue" />,
-      title: "Еженедельные выплаты",
-      description: "Гарантированные выплаты каждую пятницу без задержек",
-      details: "От 50,000₽ до 200,000₽+ в месяц в зависимости от опыта"
+      title: "Weekly Payments",
+      description: "Guaranteed payments every Friday without delays",
+      details: "From $750 to $3,000+ per month depending on experience"
     },
     {
       icon: <Clock className="w-8 h-8 text-neon-purple" />,
-      title: "Гибкий график",
-      description: "Работайте когда удобно, без привязки к офису",
-      details: "Минимум 4-6 часов в день, выбирайте время сами"
+      title: "Flexible Schedule",
+      description: "Work when convenient, no office restrictions",
+      details: "Minimum 4-6 hours per day, choose your own time"
     },
     {
       icon: <Trophy className="w-8 h-8 text-yellow-400" />,
-      title: "Премии и бонусы",
-      description: "Дополнительные выплаты за качественную работу",
-      details: "До 30% премии за высокие рейтинги клиентов"
+      title: "Bonuses & Rewards",
+      description: "Additional payments for quality work",
+      details: "Up to 30% bonus for high client ratings"
     },
     {
       icon: <Users className="w-8 h-8 text-green-400" />,
-      title: "Команда профи",
-      description: "Работа в команде опытных игроков",
-      details: "Обмен опытом, поддержка, совместные проекты"
+      title: "Pro Team",
+      description: "Work in a team of experienced players",
+      details: "Experience sharing, support, joint projects"
     },
     {
       icon: <Shield className="w-8 h-8 text-blue-400" />,
-      title: "Полная безопасность",
-      description: "Защита аккаунтов и конфиденциальности",
-      details: "VPN, безопасные методы, страхование аккаунтов"
+      title: "Complete Safety",
+      description: "Account protection and confidentiality",
+      details: "VPN, safe methods, account insurance"
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-orange-400" />,
-      title: "Карьерный рост",
-      description: "Развитие от исполнителя до тим-лидера",
-      details: "Возможность стать наставником и получать % с команды"
+      title: "Career Growth",
+      description: "Development from player to team leader",
+      details: "Opportunity to become a mentor and earn % from team"
     }
   ];
 
   const onboardingSteps = [
     {
       step: 1,
-      title: "Подача заявки",
-      description: "Заполните анкету и пройдите первичный отбор",
+      title: "Application",
+      description: "Fill out the form and pass initial screening",
       icon: <FileCheck className="w-6 h-6" />,
-      duration: "1 день",
+      duration: "1 day",
       details: [
-        "Анкета с игровым опытом",
-        "Скриншоты достижений",
-        "Мотивационное письмо"
+        "Gaming experience form",
+        "Achievement screenshots",
+        "Motivation letter"
       ]
     },
     {
       step: 2,
-      title: "Тестовое задание",
-      description: "Продемонстрируйте свои навыки на практике",
+      title: "Test Assignment",
+      description: "Demonstrate your skills in practice",
       icon: <Gamepad2 className="w-6 h-6" />,
-      duration: "2-3 дня",
+      duration: "2-3 days",
       details: [
-        "Выполнение буста в игре",
-        "Запись геймплея",
-        "Соблюдение требований"
+        "Complete a team session",
+        "Gameplay recording",
+        "Meeting requirements"
       ]
     },
     {
       step: 3,
-      title: "Собеседование",
-      description: "Интервью с HR и техническим специалистом",
+      title: "Interview",
+      description: "Interview with HR and technical specialist",
       icon: <MessageCircle className="w-6 h-6" />,
-      duration: "1 час",
+      duration: "1 hour",
       details: [
-        "Видеозвонок с HR",
-        "Обсуждение условий",
-        "Ответы на вопросы"
+        "Video call with HR",
+        "Discuss conditions",
+        "Answer questions"
       ]
     },
     {
       step: 4,
-      title: "KYC процедура",
-      description: "Верификация личности и подписание договора",
+      title: "KYC Procedure",
+      description: "Identity verification and contract signing",
       icon: <UserCheck className="w-6 h-6" />,
-      duration: "1-2 дня",
+      duration: "1-2 days",
       details: [
-        "Проверка документов",
-        "Подписание NDA",
-        "Настройка аккаунтов"
+        "Document verification",
+        "NDA signing",
+        "Account setup"
       ]
     }
   ];
 
   const requirements = [
-    "Опыт игры от 2+ лет",
-    "Высокий ранг в выбранной игре",
-    "Стабильный интернет",
-    "Знание английского языка",
-    "Ответственность и пунктуальность"
+    "2+ years gaming experience",
+    "High rank in chosen game",
+    "Stable internet connection",
+    "English language knowledge",
+    "Responsibility and punctuality"
   ];
 
   const games = [
-    { name: "League of Legends", ranks: ["Diamond+"], rate: "от 500₽/час" },
-    { name: "Valorant", ranks: ["Immortal+"], rate: "от 600₽/час" },
-    { name: "CS2", ranks: ["Global Elite"], rate: "от 550₽/час" },
-    { name: "Dota 2", ranks: ["Divine+"], rate: "от 500₽/час" },
-    { name: "Overwatch 2", ranks: ["Master+"], rate: "от 450₽/час" },
-    { name: "Apex Legends", ranks: ["Master+"], rate: "от 400₽/час" }
+    { name: "League of Legends", ranks: ["Diamond+"], rate: "from $7/hour" },
+    { name: "Valorant", ranks: ["Immortal+"], rate: "from $8/hour" },
+    { name: "CS2", ranks: ["Global Elite"], rate: "from $7.5/hour" },
+    { name: "Dota 2", ranks: ["Divine+"], rate: "from $7/hour" },
+    { name: "Overwatch 2", ranks: ["Master+"], rate: "from $6/hour" },
+    { name: "Apex Legends", ranks: ["Master+"], rate: "from $5.5/hour" }
   ];
 
   return (
@@ -143,16 +143,16 @@ const JoinUs = () => {
         <div className="max-w-6xl mx-auto text-center relative">
           <Badge className="mb-6 bg-neon-purple/20 text-neon-purple border-neon-purple/30">
             <Star className="w-4 h-4 mr-2" />
-            Присоединяйся к команде профи
+            Join the Pro Team
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6 glow-text">
-            Работай с нами
+            Work with Us
           </h1>
           
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Зарабатывай на том, что любишь. Стань частью команды профессиональных игроков 
-            и получай стабильный доход от игрового мастерства.
+            Earn from what you love. Become part of a professional gaming team 
+            and get stable income from your gaming skills.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -160,11 +160,11 @@ const JoinUs = () => {
               size="lg" 
               className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-lg px-8 py-6"
             >
-              Подать заявку
+              Apply Now
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 text-lg px-8 py-6">
-              Узнать больше
+              Learn More
             </Button>
           </div>
         </div>
@@ -174,8 +174,8 @@ const JoinUs = () => {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 glow-text">Преимущества работы с нами</h2>
-            <p className="text-gray-400 text-lg">Почему тысячи игроков выбирают нашу платформу</p>
+            <h2 className="text-4xl font-bold mb-4 glow-text">Benefits of Working with Us</h2>
+            <p className="text-gray-400 text-lg">Why thousands of players choose our platform</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -203,8 +203,8 @@ const JoinUs = () => {
       <section className="py-16 px-4 bg-dark-800/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 glow-text">Процесс онбординга</h2>
-            <p className="text-gray-400 text-lg">Путь от подачи заявки до первого заказа</p>
+            <h2 className="text-4xl font-bold mb-4 glow-text">Onboarding Process</h2>
+            <p className="text-gray-400 text-lg">Journey from application to first order</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -221,7 +221,7 @@ const JoinUs = () => {
                     {step.icon}
                   </div>
                   <Badge variant="outline" className="mb-2 border-neon-blue text-neon-blue">
-                    Шаг {step.step}
+                    Step {step.step}
                   </Badge>
                   <CardTitle className="text-lg text-white">{step.title}</CardTitle>
                   <CardDescription className="text-gray-300">
@@ -252,8 +252,8 @@ const JoinUs = () => {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 glow-text">Игры и ставки</h2>
-            <p className="text-gray-400 text-lg">Расценки для профессиональных игроков</p>
+            <h2 className="text-4xl font-bold mb-4 glow-text">Games and Rates</h2>
+            <p className="text-gray-400 text-lg">Rates for professional players</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -269,7 +269,7 @@ const JoinUs = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <p className="text-gray-400">Требуемый ранг:</p>
+                    <p className="text-gray-400">Required rank:</p>
                     <div className="flex flex-wrap gap-2">
                       {game.ranks.map((rank, idx) => (
                         <Badge key={idx} variant="outline" className="border-neon-purple text-neon-purple">
@@ -289,15 +289,15 @@ const JoinUs = () => {
       <section className="py-16 px-4 bg-dark-800/30">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 glow-text">Требования</h2>
-            <p className="text-gray-400 text-lg">Что нужно для работы с нами</p>
+            <h2 className="text-4xl font-bold mb-4 glow-text">Requirements</h2>
+            <p className="text-gray-400 text-lg">What you need to work with us</p>
           </div>
 
           <Card className="bg-dark-800/50 border-gray-700">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-4">Основные требования</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Basic Requirements</h3>
                   <ul className="space-y-3">
                     {requirements.map((req, index) => (
                       <li key={index} className="flex items-center text-gray-300">
@@ -309,27 +309,27 @@ const JoinUs = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-4">Что мы предоставляем</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">What We Provide</h3>
                   <ul className="space-y-3">
                     <li className="flex items-center text-gray-300">
                       <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                      Обучение и менторство
+                      Training and mentorship
                     </li>
                     <li className="flex items-center text-gray-300">
                       <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                      Доступ к приватным аккаунтам
+                      Access to private accounts
                     </li>
                     <li className="flex items-center text-gray-300">
                       <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                      Техническую поддержку 24/7
+                      24/7 technical support
                     </li>
                     <li className="flex items-center text-gray-300">
                       <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                      Страхование от банов
+                      Ban insurance
                     </li>
                     <li className="flex items-center text-gray-300">
                       <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                      Корпоративные скидки
+                      Corporate discounts
                     </li>
                   </ul>
                 </div>
@@ -344,9 +344,9 @@ const JoinUs = () => {
         <div className="max-w-4xl mx-auto text-center">
           <Card className="bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 border-neon-blue/30">
             <CardContent className="p-12">
-              <h2 className="text-3xl font-bold mb-4 glow-text">Готов начать?</h2>
+              <h2 className="text-3xl font-bold mb-4 glow-text">Ready to Start?</h2>
               <p className="text-gray-300 text-lg mb-8">
-                Присоединяйся к команде профессионалов и зарабатывай на игровом мастерстве
+                Join the team of professionals and earn from your gaming skills
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -354,11 +354,11 @@ const JoinUs = () => {
                   size="lg" 
                   className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-lg px-8 py-6"
                 >
-                  Подать заявку сейчас
+                  Apply Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 text-lg px-8 py-6">
-                  Задать вопрос в Discord
+                  Ask in Discord
                 </Button>
               </div>
             </CardContent>

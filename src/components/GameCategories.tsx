@@ -8,7 +8,7 @@ const GameCategories = () => {
     {
       title: "League of Legends",
       subtitle: "MOBA",
-      services: ["Boost", "Coaching", "Duo Queue"],
+      services: ["Team Play", "Coaching", "Duo Queue"],
       popular: true,
       image: "🎮",
       gradient: "from-blue-600 to-purple-600"
@@ -16,7 +16,7 @@ const GameCategories = () => {
     {
       title: "CS2",
       subtitle: "FPS",
-      services: ["Rank Boost", "Premier", "Faceit"],
+      services: ["Team Sessions", "Premier", "Faceit"],
       popular: false,
       image: "🔫",
       gradient: "from-orange-600 to-red-600"
@@ -24,7 +24,7 @@ const GameCategories = () => {
     {
       title: "Valorant",
       subtitle: "Tactical FPS",
-      services: ["Rank Boost", "Coaching", "Account"],
+      services: ["Team Play", "Coaching", "Training"],
       popular: true,
       image: "⚡",
       gradient: "from-pink-600 to-rose-600"
@@ -32,7 +32,7 @@ const GameCategories = () => {
     {
       title: "Dota 2",
       subtitle: "MOBA",
-      services: ["MMR Boost", "Calibration", "Coaching"],
+      services: ["Team Sessions", "Coaching", "Strategy"],
       popular: false,
       image: "🛡️",
       gradient: "from-green-600 to-emerald-600"
@@ -48,7 +48,7 @@ const GameCategories = () => {
     {
       title: "Apex Legends",
       subtitle: "Battle Royale",
-      services: ["Rank Boost", "Badges", "Stats"],
+      services: ["Team Play", "Training", "Strategies"],
       popular: false,
       image: "🏆",
       gradient: "from-cyan-600 to-blue-600"
@@ -61,12 +61,12 @@ const GameCategories = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Выберите </span>
-            <span className="glow-text">Игру</span>
+            <span className="text-white">Choose Your </span>
+            <span className="glow-text">Game</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Профессиональные услуги для всех популярных игр. 
-            Boost, coaching и carry от топовых игроков.
+            Professional team services for all popular games. 
+            Team play, coaching and training with top players.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ const GameCategories = () => {
                 <div className="absolute top-4 right-4 z-10">
                   <div className="bg-gradient-to-r from-neon-blue to-neon-purple px-3 py-1 rounded-full text-xs font-semibold text-white flex items-center">
                     <Star size={12} className="mr-1" />
-                    Популярно
+                    Popular
                   </div>
                 </div>
               )}
@@ -102,7 +102,7 @@ const GameCategories = () => {
                   {game.services.map((service, serviceIndex) => (
                     <span 
                       key={serviceIndex}
-                      className="bg-dark-700/50 text-gray-300 px-2 py-1 rounded text-xs border border-dark-600"
+                      className="px-2 py-1 bg-dark-700 text-gray-300 text-xs rounded border border-dark-600"
                     >
                       {service}
                     </span>
@@ -111,9 +111,10 @@ const GameCategories = () => {
                 
                 {/* CTA Button */}
                 <Button 
-                  className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 group"
+                  className="w-full bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/50 text-neon-blue hover:bg-gradient-to-r hover:from-neon-blue/30 hover:to-neon-purple/30 transition-all duration-300 group"
+                  variant="outline"
                 >
-                  Выбрать услуги
+                  Join Team
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                 </Button>
               </CardContent>
@@ -121,14 +122,17 @@ const GameCategories = () => {
           ))}
         </div>
 
-        {/* View All Games Button */}
+        {/* Bottom CTA */}
         <div className="text-center">
+          <p className="text-gray-400 mb-6">
+            Don't see your game? We're constantly adding new titles.
+          </p>
           <Button 
-            variant="outline" 
             size="lg"
-            className="border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 px-8 py-3 text-lg font-semibold"
+            className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue px-8 py-3"
           >
-            Посмотреть все игры
+            <Trophy className="mr-2" size={20} />
+            Request New Game
           </Button>
         </div>
       </div>

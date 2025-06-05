@@ -14,51 +14,51 @@ const GameCategory = () => {
     title: "League of Legends",
     subtitle: "MOBA",
     image: "🎮",
-    description: "Поднимите свой ранг в самой популярной MOBA игре с помощью профессиональных игроков"
+    description: "Join professional teams and improve your rank in the most popular MOBA game"
   };
 
   const services = [
     {
       id: 1,
-      title: "Boost до Gold",
-      price: "2,500₽",
-      originalPrice: "3,000₽",
-      duration: "1-3 дня",
-      description: "Быстрый подъем ранга до Gold дивизиона",
-      features: ["VPN защита", "Стрим процесса", "Гарантия ранга"],
+      title: "Team to Gold",
+      price: "$35",
+      originalPrice: "$45",
+      duration: "1-3 days",
+      description: "Fast team-based climb to Gold division",
+      features: ["VPN protection", "Process streaming", "Rank guarantee"],
       popular: false,
       discount: 15
     },
     {
       id: 2,
-      title: "Boost до Platinum",
-      price: "4,500₽",
-      originalPrice: "5,500₽",
-      duration: "3-5 дней",
-      description: "Профессиональный буст до Platinum ранга",
-      features: ["VPN защита", "Стрим процесса", "Гарантия ранга", "Приоритет"],
+      title: "Team to Platinum",
+      price: "$65",
+      originalPrice: "$80",
+      duration: "3-5 days",
+      description: "Professional team sessions to reach Platinum rank",
+      features: ["VPN protection", "Process streaming", "Rank guarantee", "Priority support"],
       popular: true,
       discount: 20
     },
     {
       id: 3,
-      title: "Coaching сессия",
-      price: "1,200₽",
+      title: "Coaching Session",
+      price: "$20",
       originalPrice: null,
-      duration: "1 час",
-      description: "Персональная тренировка с про-игроком",
-      features: ["Анализ реплеев", "Советы по игре", "План развития"],
+      duration: "1 hour",
+      description: "Personal training with a pro player",
+      features: ["Replay analysis", "Game tips", "Development plan"],
       popular: false,
       discount: 0
     },
     {
       id: 4,
       title: "Duo Queue",
-      price: "800₽",
+      price: "$12",
       originalPrice: null,
-      duration: "1 игра",
-      description: "Игра в паре с профессионалом",
-      features: ["Выбор роли", "Реальное время", "Советы в игре"],
+      duration: "1 game",
+      description: "Play in duo with a professional",
+      features: ["Role selection", "Real-time tips", "In-game advice"],
       popular: false,
       discount: 0
     }
@@ -74,7 +74,7 @@ const GameCategory = () => {
           <div className="flex items-center mb-8">
             <Button variant="ghost" className="mr-4 text-gray-400 hover:text-white">
               <ArrowLeft size={20} className="mr-2" />
-              Назад
+              Back
             </Button>
           </div>
 
@@ -101,7 +101,7 @@ const GameCategory = () => {
               <div className="relative w-full">
                 <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input 
-                  placeholder="Поиск услуг..."
+                  placeholder="Search services..."
                   className="pl-10 bg-dark-700 border-dark-600 text-white"
                 />
               </div>
@@ -110,13 +110,13 @@ const GameCategory = () => {
             <div className="flex gap-3">
               <Button variant="outline" className="border-dark-600 text-gray-300">
                 <Filter size={16} className="mr-2" />
-                Фильтры
+                Filters
               </Button>
               <select className="bg-dark-700 border border-dark-600 text-white px-4 py-2 rounded">
-                <option>По популярности</option>
-                <option>По цене ↑</option>
-                <option>По цене ↓</option>
-                <option>По времени</option>
+                <option>By popularity</option>
+                <option>Price ↑</option>
+                <option>Price ↓</option>
+                <option>By duration</option>
               </select>
             </div>
           </div>

@@ -34,8 +34,8 @@ const Footer = () => {
               <span className="text-2xl font-bold glow-text">TeamPlay</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Объединяем игроков в команды для достижения новых высот в киберспорте.
-              Играй вместе, развивайся и побеждай!
+              Connecting gamers in teams to reach new heights in esports.
+              Play together, grow and win!
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (

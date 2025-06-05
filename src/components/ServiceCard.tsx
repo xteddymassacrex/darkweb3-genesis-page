@@ -34,7 +34,7 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
       name: service.title,
       price: parseInt(service.price.replace(/[^\d]/g, '')),
       image: '🎮',
-      gameTitle: gameId || 'Неизвестная игра'
+      gameTitle: gameId || 'Unknown Game'
     });
   };
 
@@ -44,7 +44,7 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
         <div className="absolute top-4 right-4 z-10">
           <div className="bg-gradient-to-r from-neon-blue to-neon-purple px-3 py-1 rounded-full text-xs font-semibold text-white flex items-center">
             <Star size={12} className="mr-1" />
-            Популярно
+            Popular
           </div>
         </div>
       )}
@@ -81,12 +81,12 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
         {/* Team Size */}
         <div className="flex items-center mb-4 text-neon-purple">
           <Users size={16} className="mr-2" />
-          <span className="text-sm">Команда 5 игроков</span>
+          <span className="text-sm">5-Player Team</span>
         </div>
 
         {/* Features */}
         <div className="mb-6">
-          <h4 className="text-white font-semibold mb-2 text-sm">Включено:</h4>
+          <h4 className="text-white font-semibold mb-2 text-sm">Included:</h4>
           <ul className="space-y-1">
             {service.features.map((feature, index) => (
               <li key={index} className="flex items-center text-sm text-gray-300">
@@ -103,7 +103,7 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
             onClick={handleViewService}
             className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 group"
           >
-            Подробнее
+            Learn More
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
           </Button>
           <Button 
@@ -111,7 +111,7 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
             onClick={handleAddToCart}
             className="w-full border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10"
           >
-            В корзину
+            Add to Cart
           </Button>
         </div>
       </CardContent>
