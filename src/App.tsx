@@ -11,6 +11,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Checkout from "./pages/Checkout";
 import JoinUs from "./pages/JoinUs";
 import UserDashboard from "./pages/UserDashboard";
+import SignIn from "./pages/SignIn";
+import SignOut from "./pages/SignOut";
 import NotFound from "./pages/NotFound";
 import CartDrawer from "./components/CartDrawer";
 
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/join-us" element={<JoinUs />} />
             <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-out" element={<SignOut />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

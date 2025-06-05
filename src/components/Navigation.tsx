@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X, Search, ShoppingCart, User } from 'lucide-react';
+import { Menu, X, Search, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useUser } from '@/context/UserContext';
@@ -78,22 +78,45 @@ const Navigation = () => {
               )}
             </Button>
 
-            {/* User Profile */}
-            <Link
-              to="/dashboard"
-              className="flex items-center space-x-2 text-gray-300 hover:text-neon-blue transition-colors"
-            >
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-gray-300 hover:text-neon-blue"
-              >
-                <User size={20} />
-              </Button>
-              {user && (
-                <span className="text-sm font-medium">{user.name}</span>
-              )}
-            </Link>
+            {/* User Profile / Auth */}
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-neon-blue transition-colors"
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-gray-300 hover:text-neon-blue"
+                  >
+                    <User size={20} />
+                  </Button>
+                  <span className="text-sm font-medium">{user.name}</span>
+                </Link>
+                
+                <Link to="/sign-out">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-gray-300 hover:text-red-400"
+                  >
+                    <LogOut size={20} />
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <Link to="/sign-in">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-gray-600 text-gray-300 hover:text-neon-blue hover:border-neon-blue"
+                >
+                  <LogIn size={16} className="mr-2" />
+                  Sign In
+                </Button>
+              </Link>
+            )}
 
             {/* CTA Button */}
             <Link to="/game/valorant">
@@ -167,15 +190,39 @@ const Navigation = () => {
                       </span>
                     )}
                   </Button>
-                  <Link to="/dashboard" onClick={() => setIsOpen(false)}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-gray-600 text-gray-300"
-                    >
-                      <User size={16} />
-                    </Button>
-                  </Link>
+                  
+                  {user ? (
+                    <>
+                      <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-gray-600 text-gray-300"
+                        >
+                          <User size={16} />
+                        </Button>
+                      </Link>
+                      <Link to="/sign-out" onClick={() => setIsOpen(false)}>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-gray-600 text-gray-300"
+                        >
+                          <LogOut size={16} />
+                        </Button>
+                      </Link>
+                    </>
+                  ) : (
+                    <Link to="/sign-in" onClick={() => setIsOpen(false)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-gray-600 text-gray-300"
+                      >
+                        <LogIn size={16} />
+                      </Button>
+                    </Link>
+                  )}
                 </div>
                 <Link to="/game/valorant" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
