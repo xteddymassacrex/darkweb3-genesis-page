@@ -40,7 +40,7 @@ const CartDrawer = () => {
           <div className="flex items-center space-x-2">
             <ShoppingBag className="w-6 h-6 text-neon-blue" />
             <h2 className="text-xl font-bold text-white">
-              Корзина ({getTotalItems()})
+              Cart ({getTotalItems()})
             </h2>
           </div>
           <Button
@@ -58,7 +58,7 @@ const CartDrawer = () => {
           {cartItems.length === 0 ? (
             <div className="text-center py-12">
               <ShoppingBag className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-400">Корзина пуста</p>
+              <p className="text-gray-400">Cart is empty</p>
             </div>
           ) : (
             cartItems.map((item) => (
@@ -72,7 +72,7 @@ const CartDrawer = () => {
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white font-medium truncate">{item.name}</h3>
                     <p className="text-gray-400 text-sm">{item.gameTitle}</p>
-                    <p className="text-neon-blue font-bold">{item.price}₽</p>
+                    <p className="text-neon-blue font-bold">${item.price}</p>
                   </div>
                   <Button
                     variant="ghost"
@@ -108,7 +108,7 @@ const CartDrawer = () => {
                     </Button>
                   </div>
                   <span className="text-white font-bold">
-                    {item.price * item.quantity}₽
+                    ${item.price * item.quantity}
                   </span>
                 </div>
               </div>
@@ -124,22 +124,22 @@ const CartDrawer = () => {
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center space-x-1 text-gray-400">
                   <Coins className="w-4 h-4" />
-                  <span>Доступно токенов:</span>
+                  <span>Available tokens:</span>
                 </div>
                 <span className="text-neon-purple font-medium">{user.bonusTokens}</span>
               </div>
             )}
             
             <div className="flex items-center justify-between text-lg font-bold text-white">
-              <span>Итого:</span>
-              <span className="text-neon-blue">{getTotalPrice()}₽</span>
+              <span>Total:</span>
+              <span className="text-neon-blue">${getTotalPrice()}</span>
             </div>
             
             <Button
               onClick={handleCheckout}
               className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300"
             >
-              Перейти к оформлению
+              Proceed to Checkout
             </Button>
           </div>
         )}

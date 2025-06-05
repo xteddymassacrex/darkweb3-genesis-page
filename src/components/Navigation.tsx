@@ -98,7 +98,7 @@ const Navigation = () => {
             {/* CTA Button */}
             <Link to="/game/valorant">
               <Button className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 glow-border">
-                Найти команду
+                Find Service
               </Button>
             </Link>
           </div>
@@ -149,7 +149,7 @@ const Navigation = () => {
                     className="border-gray-600 text-gray-300 flex-1"
                   >
                     <Search size={16} className="mr-2" />
-                    Поиск
+                    Search
                   </Button>
                   <Button
                     variant="outline"
@@ -179,7 +179,7 @@ const Navigation = () => {
                 </div>
                 <Link to="/game/valorant" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
-                    Найти команду
+                    Find Service
                   </Button>
                 </Link>
               </div>
