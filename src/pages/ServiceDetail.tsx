@@ -32,29 +32,29 @@ const ServiceDetail = () => {
 
   const service = {
     id: 1,
-    title: "Boost до Platinum",
-    price: "4,500₽",
-    originalPrice: "5,500₽",
-    duration: "3-5 дней",
-    description: "Профессиональный буст до Platinum ранга с гарантией результата и полной безопасностью аккаунта.",
+    title: "Boost to Platinum",
+    price: "$45",
+    originalPrice: "$55",
+    duration: "3-5 days",
+    description: "Professional boost to Platinum rank with guaranteed results and complete account security.",
     image: "⚡",
     discount: 20,
     rating: 4.9,
     completedOrders: 1247,
     features: [
-      "VPN защита аккаунта",
-      "Стрим процесса по запросу", 
-      "Гарантия достижения ранга",
-      "Приоритетная поддержка 24/7",
-      "Возврат средств при неудаче",
-      "Подробный отчет о прогрессе"
+      "VPN account protection",
+      "Process streaming on request", 
+      "Rank achievement guarantee",
+      "Priority support 24/7",
+      "Money back guarantee if unsuccessful",
+      "Detailed progress report"
     ],
     process: [
-      "Выберите текущий и желаемый ранг",
-      "Оплатите услугу любым способом",
-      "Передайте данные аккаунта",
-      "Следите за прогрессом в реальном времени",
-      "Получите аккаунт с новым рангом"
+      "Choose your current and desired rank",
+      "Pay for the service using any method",
+      "Provide your account details",
+      "Track progress in real-time",
+      "Receive your account with the new rank"
     ],
     booster: {
       name: "ProGamer_RU",
@@ -73,17 +73,17 @@ const ServiceDetail = () => {
   };
 
   const calculatePrice = () => {
-    let basePrice = 4500;
-    if (additionalOptions.stream) basePrice += 500;
-    if (additionalOptions.priorityQueue) basePrice += 300;
-    if (additionalOptions.soloQueue) basePrice += 200;
-    if (additionalOptions.specificAgents) basePrice += 400;
+    let basePrice = 45;
+    if (additionalOptions.stream) basePrice += 5;
+    if (additionalOptions.priorityQueue) basePrice += 3;
+    if (additionalOptions.soloQueue) basePrice += 2;
+    if (additionalOptions.specificAgents) basePrice += 4;
     
     // Adjust based on time range
     const timeMultiplier = (playTimeRange[1] - playTimeRange[0]) * 0.1;
     basePrice += basePrice * timeMultiplier;
     
-    return basePrice.toLocaleString('ru-RU');
+    return `$${basePrice.toFixed(0)}`;
   };
 
   return (
@@ -96,7 +96,7 @@ const ServiceDetail = () => {
           <div className="mb-8">
             <Button variant="ghost" className="text-gray-400 hover:text-white">
               <ArrowLeft size={20} className="mr-2" />
-              Назад к услугам
+              Back to services
             </Button>
           </div>
 
@@ -122,7 +122,7 @@ const ServiceDetail = () => {
                     </div>
                     <div className="flex items-center text-green-400">
                       <CheckCircle size={16} className="mr-1" />
-                      <span>{service.completedOrders} заказов</span>
+                      <span>{service.completedOrders} orders</span>
                     </div>
                     <div className="flex items-center text-blue-400">
                       <Clock size={16} className="mr-1" />
@@ -135,7 +135,7 @@ const ServiceDetail = () => {
               {/* Features */}
               <Card className="bg-dark-800/50 border-dark-600">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Что включено</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">What's included</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {service.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-gray-300">
@@ -150,7 +150,7 @@ const ServiceDetail = () => {
               {/* Process */}
               <Card className="bg-dark-800/50 border-dark-600">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Как это работает</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">How it works</h3>
                   <div className="space-y-4">
                     {service.process.map((step, index) => (
                       <div key={index} className="flex items-start">
@@ -167,7 +167,7 @@ const ServiceDetail = () => {
               {/* Booster Info */}
               <Card className="bg-dark-800/50 border-dark-600">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Ваш бустер</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Your booster</h3>
                   <div className="flex items-center gap-4">
                     <div className="text-3xl">{service.booster.avatar}</div>
                     <div className="flex-1">
@@ -180,13 +180,13 @@ const ServiceDetail = () => {
                         </div>
                         <div className="flex items-center">
                           <Users size={14} className="mr-1" />
-                          {service.booster.completedJobs} заказов
+                          {service.booster.completedJobs} orders
                         </div>
                       </div>
                     </div>
                     <Button variant="outline" className="border-neon-blue/50 text-neon-blue">
                       <MessageCircle size={16} className="mr-2" />
-                      Написать
+                      Message
                     </Button>
                   </div>
                 </CardContent>
@@ -200,14 +200,14 @@ const ServiceDetail = () => {
                   {/* Price */}
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl font-bold glow-text">{calculatePrice()}₽</span>
+                      <span className="text-3xl font-bold glow-text">{calculatePrice()}</span>
                       {service.originalPrice && (
                         <span className="text-gray-500 line-through text-xl">{service.originalPrice}</span>
                       )}
                     </div>
                     {service.discount > 0 && (
                       <div className="bg-red-500 px-2 py-1 rounded text-xs font-semibold text-white inline-block">
-                        Скидка {service.discount}%
+                        {service.discount}% off
                       </div>
                     )}
                   </div>
@@ -215,7 +215,7 @@ const ServiceDetail = () => {
                   {/* Rank Selection */}
                   <div className="space-y-4">
                     <div>
-                      <Label className="text-white font-medium mb-2 block">Текущий ранг</Label>
+                      <Label className="text-white font-medium mb-2 block">Current rank</Label>
                       <select 
                         value={currentRank}
                         onChange={(e) => setCurrentRank(e.target.value)}
@@ -229,7 +229,7 @@ const ServiceDetail = () => {
                     </div>
                     
                     <div>
-                      <Label className="text-white font-medium mb-2 block">Желаемый ранг</Label>
+                      <Label className="text-white font-medium mb-2 block">Target rank</Label>
                       <select 
                         value={targetRank}
                         onChange={(e) => setTargetRank(e.target.value)}
@@ -245,26 +245,26 @@ const ServiceDetail = () => {
 
                   {/* Game Mode Selection */}
                   <div>
-                    <Label className="text-white font-medium mb-3 block">Режим игры</Label>
+                    <Label className="text-white font-medium mb-3 block">Game mode</Label>
                     <RadioGroup value={gameMode} onValueChange={setGameMode}>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="competitive" id="competitive" />
-                        <Label htmlFor="competitive" className="text-gray-300">Соревновательный</Label>
+                        <Label htmlFor="competitive" className="text-gray-300">Competitive</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="ranked" id="ranked" />
-                        <Label htmlFor="ranked" className="text-gray-300">Рейтинговый</Label>
+                        <Label htmlFor="ranked" className="text-gray-300">Ranked</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="premier" id="premier" />
-                        <Label htmlFor="premier" className="text-gray-300">Премьер (+200₽)</Label>
+                        <Label htmlFor="premier" className="text-gray-300">Premier (+$2)</Label>
                       </div>
                     </RadioGroup>
                   </div>
 
                   {/* Queue Type Selection */}
                   <div>
-                    <Label className="text-white font-medium mb-3 block">Тип очереди</Label>
+                    <Label className="text-white font-medium mb-3 block">Queue type</Label>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -273,7 +273,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('soloQueue', checked as boolean)}
                         />
                         <Label htmlFor="soloQueue" className="text-gray-300">
-                          Соло очередь (+200₽)
+                          Solo queue (+$2)
                         </Label>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -283,7 +283,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('duoQueue', checked as boolean)}
                         />
                         <Label htmlFor="duoQueue" className="text-gray-300">
-                          Дуо очередь
+                          Duo queue
                         </Label>
                       </div>
                     </div>
@@ -292,7 +292,7 @@ const ServiceDetail = () => {
                   {/* Play Time Range */}
                   <div>
                     <Label className="text-white font-medium mb-3 block">
-                      Время игры в день: {playTimeRange[0]}-{playTimeRange[1]} часов
+                      Daily playtime: {playTimeRange[0]}-{playTimeRange[1]} hours
                     </Label>
                     <Slider
                       value={playTimeRange}
@@ -303,15 +303,15 @@ const ServiceDetail = () => {
                       className="w-full"
                     />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
-                      <span>1 час</span>
-                      <span>12 часов</span>
+                      <span>1 hour</span>
+                      <span>12 hours</span>
                     </div>
                   </div>
 
                   {/* Number of Agents */}
                   <div>
                     <Label className="text-white font-medium mb-3 block">
-                      Количество агентов: {agentCount[0]}
+                      Number of agents: {agentCount[0]}
                     </Label>
                     <Slider
                       value={agentCount}
@@ -322,14 +322,14 @@ const ServiceDetail = () => {
                       className="w-full"
                     />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
-                      <span>1 агент</span>
-                      <span>5 агентов</span>
+                      <span>1 agent</span>
+                      <span>5 agents</span>
                     </div>
                   </div>
 
                   {/* Additional Options */}
                   <div>
-                    <Label className="text-white font-medium mb-3 block">Дополнительные опции</Label>
+                    <Label className="text-white font-medium mb-3 block">Additional options</Label>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -338,7 +338,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('stream', checked as boolean)}
                         />
                         <Label htmlFor="stream" className="text-gray-300">
-                          Стрим процесса (+500₽)
+                          Stream process (+$5)
                         </Label>
                       </div>
                       
@@ -349,7 +349,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('vpnProtection', checked as boolean)}
                         />
                         <Label htmlFor="vpnProtection" className="text-gray-300">
-                          VPN защита (включено)
+                          VPN protection (included)
                         </Label>
                       </div>
 
@@ -360,7 +360,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('priorityQueue', checked as boolean)}
                         />
                         <Label htmlFor="priorityQueue" className="text-gray-300">
-                          Приоритетная очередь (+300₽)
+                          Priority queue (+$3)
                         </Label>
                       </div>
 
@@ -371,7 +371,7 @@ const ServiceDetail = () => {
                           onCheckedChange={(checked) => handleOptionChange('specificAgents', checked as boolean)}
                         />
                         <Label htmlFor="specificAgents" className="text-gray-300">
-                          Игра на определенных агентах (+400₽)
+                          Play specific agents (+$4)
                         </Label>
                       </div>
                     </div>
@@ -380,10 +380,10 @@ const ServiceDetail = () => {
                   {/* CTA Buttons */}
                   <div className="space-y-3 pt-4">
                     <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-lg py-3">
-                      Заказать сейчас
+                      Order Now
                     </Button>
                     <Button variant="outline" className="w-full border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10">
-                      Добавить в корзину
+                      Add to Cart
                     </Button>
                   </div>
 
@@ -392,11 +392,11 @@ const ServiceDetail = () => {
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
                         <Shield className="text-green-400 mx-auto mb-1" size={20} />
-                        <p className="text-xs text-gray-400">100% Безопасно</p>
+                        <p className="text-xs text-gray-400">100% Safe</p>
                       </div>
                       <div>
                         <Clock className="text-blue-400 mx-auto mb-1" size={20} />
-                        <p className="text-xs text-gray-400">Быстрый старт</p>
+                        <p className="text-xs text-gray-400">Quick Start</p>
                       </div>
                     </div>
                   </div>
