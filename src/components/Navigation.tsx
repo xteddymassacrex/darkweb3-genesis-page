@@ -10,12 +10,12 @@ const Navigation = () => {
   const { getTotalItems, setIsCartOpen, user } = useUser();
 
   const navItems = [
-    { name: 'Игры', href: '#games' },
-    { name: 'Команды', href: '#services' },
-    { name: 'Работа', href: '/join-us' },
-    { name: 'Отзывы', href: '#reviews' },
+    { name: 'Games', href: '#games' },
+    { name: 'Teams', href: '#services' },
+    { name: 'Careers', href: '/join-us' },
+    { name: 'Reviews', href: '#reviews' },
     { name: 'FAQ', href: '#faq' },
-    { name: 'Контакты', href: '#contact' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
