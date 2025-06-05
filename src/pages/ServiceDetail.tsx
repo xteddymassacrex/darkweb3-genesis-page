@@ -8,7 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowLeft, Shield, Clock, Star, Users, CheckCircle, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Shield, Clock, Star, Users, CheckCircle, Search, Target, Trophy } from 'lucide-react';
 import { useState } from 'react';
 
 const ServiceDetail = () => {
@@ -56,12 +56,18 @@ const ServiceDetail = () => {
       "Track progress in real-time",
       "Receive your account with the new rank"
     ],
-    booster: {
-      name: "ProGamer_RU",
-      rating: 5.0,
-      completedJobs: 342,
-      rank: "Grandmaster",
-      avatar: "👨‍💻"
+    seo: {
+      title: "Professional Valorant Rank Boosting Service",
+      description: "Get your Valorant rank boosted safely and efficiently by our professional team. We offer secure, fast, and reliable rank boosting services with VPN protection, live streaming options, and 24/7 support. Achieve your desired rank from Silver to Platinum with guaranteed results and complete account security.",
+      keywords: ["Valorant boost", "rank boosting", "Valorant coaching", "professional gaming", "competitive ranking"],
+      benefits: [
+        "100% Safe and Secure boosting with VPN protection",
+        "Professional players with Grandmaster+ ranks",
+        "Fast completion times (3-5 days average)",
+        "Live streaming available to watch your progress",
+        "24/7 customer support and progress tracking",
+        "Money-back guarantee if targets aren't met"
+      ]
     }
   };
 
@@ -132,6 +138,57 @@ const ServiceDetail = () => {
                 </div>
               </div>
 
+              {/* SEO Block */}
+              <Card className="bg-dark-800/50 border-dark-600">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Search className="text-neon-blue" size={24} />
+                    <h3 className="text-xl font-bold text-white">{service.seo.title}</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    {service.seo.description}
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
+                        <Target className="text-neon-purple mr-2" size={18} />
+                        Why Choose Our Service?
+                      </h4>
+                      <ul className="space-y-2">
+                        {service.seo.benefits.slice(0, 3).map((benefit, index) => (
+                          <li key={index} className="text-gray-300 text-sm flex items-start">
+                            <Trophy className="text-yellow-400 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
+                        <Shield className="text-green-400 mr-2" size={18} />
+                        Service Guarantees
+                      </h4>
+                      <ul className="space-y-2">
+                        {service.seo.benefits.slice(3).map((benefit, index) => (
+                          <li key={index} className="text-gray-300 text-sm flex items-start">
+                            <CheckCircle className="text-green-400 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 pt-4 border-t border-dark-600">
+                    <p className="text-xs text-gray-500">
+                      <strong>Keywords:</strong> {service.seo.keywords.join(", ")}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Features */}
               <Card className="bg-dark-800/50 border-dark-600">
                 <CardContent className="p-6">
@@ -160,34 +217,6 @@ const ServiceDetail = () => {
                         <p className="text-gray-300 pt-1">{step}</p>
                       </div>
                     ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Booster Info */}
-              <Card className="bg-dark-800/50 border-dark-600">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Your booster</h3>
-                  <div className="flex items-center gap-4">
-                    <div className="text-3xl">{service.booster.avatar}</div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-white">{service.booster.name}</h4>
-                      <p className="text-neon-purple font-medium">{service.booster.rank}</p>
-                      <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
-                        <div className="flex items-center">
-                          <Star size={14} className="mr-1 text-yellow-400 fill-current" />
-                          {service.booster.rating}
-                        </div>
-                        <div className="flex items-center">
-                          <Users size={14} className="mr-1" />
-                          {service.booster.completedJobs} orders
-                        </div>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="border-neon-blue/50 text-neon-blue">
-                      <MessageCircle size={16} className="mr-2" />
-                      Message
-                    </Button>
                   </div>
                 </CardContent>
               </Card>
