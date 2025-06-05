@@ -9,36 +9,36 @@ const CustomerReviews = () => {
 
   const reviews = [
     {
-      name: "Алексей М.",
+      name: "Alex M.",
       game: "League of Legends",
-      service: "Boost до Diamond",
+      service: "Boost to Diamond",
       rating: 5,
-      text: "Отличный сервис! Поднялся с Gold до Diamond за 3 дня. Бустер играл аккуратно, никаких проблем с аккаунтом не было.",
+      text: "Excellent service! Climbed from Gold to Diamond in 3 days. The booster played carefully, no account issues whatsoever.",
       avatar: "AM"
     },
     {
-      name: "Мария К.",
+      name: "Maria K.",
       game: "Valorant",
       service: "Coaching",
       rating: 5,
-      text: "Тренер объяснил все мои ошибки и дал конкретные советы. За неделю поднялась на 2 ранга! Рекомендую всем.",
-      avatar: "МК"
+      text: "The coach explained all my mistakes and gave concrete advice. Climbed 2 ranks in a week! Recommend to everyone.",
+      avatar: "MK"
     },
     {
-      name: "Дмитрий В.",
+      name: "Dmitry V.",
       game: "CS2",
       service: "Premier Boost",
       rating: 5,
-      text: "Быстро и качественно подняли рейтинг в Premier. Общались в чате, отвечали на все вопросы. Буду заказывать еще.",
-      avatar: "ДВ"
+      text: "Quickly and efficiently boosted my Premier rating. They communicated in chat, answered all questions. Will order again.",
+      avatar: "DV"
     },
     {
-      name: "Анна С.",
+      name: "Anna S.",
       game: "WoW",
-      service: "Mythic+ ключи",
+      service: "Mythic+ keys",
       rating: 5,
-      text: "Прошли все ключи до +20, получила отличный gear. Команда профессиональная, знают все тактики.",
-      avatar: "АС"
+      text: "Completed all keys up to +20, got excellent gear. Professional team, knows all tactics.",
+      avatar: "AS"
     }
   ];
 
@@ -56,11 +56,11 @@ const CustomerReviews = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-white">Отзывы </span>
-            <span className="glow-text">клиентов</span>
+            <span className="text-white">Customer </span>
+            <span className="glow-text">Reviews</span>
           </h2>
           <p className="text-lg text-gray-400">
-            Что говорят наши клиенты о качестве наших услуг
+            What our customers say about the quality of our services
           </p>
         </div>
 
