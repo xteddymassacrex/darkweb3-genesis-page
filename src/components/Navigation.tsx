@@ -11,7 +11,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Игры', href: '#games' },
-    { name: 'Услуги', href: '#services' },
+    { name: 'Команды', href: '#services' },
     { name: 'Работа', href: '/join-us' },
     { name: 'Отзывы', href: '#reviews' },
     { name: 'FAQ', href: '#faq' },
@@ -24,7 +24,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold glow-text">GameBoost</Link>
+            <Link to="/" className="text-2xl font-bold glow-text">TeamPlay</Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -96,9 +96,11 @@ const Navigation = () => {
             </Link>
 
             {/* CTA Button */}
-            <Button className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 glow-border">
-              Начать
-            </Button>
+            <Link to="/game/valorant">
+              <Button className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue transition-all duration-300 glow-border">
+                Найти команду
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -175,9 +177,11 @@ const Navigation = () => {
                     </Button>
                   </Link>
                 </div>
-                <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
-                  Начать
-                </Button>
+                <Link to="/game/valorant" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-gradient-to-r from-neon-blue to-neon-purple">
+                    Найти команду
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

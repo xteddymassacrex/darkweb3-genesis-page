@@ -1,10 +1,11 @@
 
 import { useState } from 'react';
-import { User, Coins, ShoppingBag, Calendar, Star, Gift, Trophy, Settings } from 'lucide-react';
+import { User, Coins, ShoppingBag, Calendar, Star, Gift, Trophy, Settings, Users, GamepadIcon, Target, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { useUser } from '@/context/UserContext';
 import Navigation from '@/components/Navigation';
 
@@ -12,42 +13,58 @@ const UserDashboard = () => {
   const { user, addBonusTokens } = useUser();
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Mock data for orders
-  const orders = [
+  // Mock data for team sessions
+  const teamSessions = [
     {
       id: '1',
-      service: 'Буст рейтинга CS2',
-      game: 'Counter-Strike 2',
-      status: 'Выполнен',
+      service: 'Команда Valorant',
+      game: 'Valorant',
+      status: 'Завершена',
       date: '2024-01-15',
       price: 2500,
-      tokensEarned: 125
+      tokensEarned: 125,
+      teamRating: 4.8,
+      duration: '3 часа'
     },
     {
       id: '2',
-      service: 'Прокачка аккаунта Valorant',
-      game: 'Valorant',
+      service: 'Тренировка CS2',
+      game: 'Counter-Strike 2',
       status: 'В процессе',
       date: '2024-01-20',
       price: 3500,
-      tokensEarned: 175
+      tokensEarned: 175,
+      teamRating: 4.9,
+      duration: '2 часа'
     },
     {
       id: '3',
-      service: 'Калибровка Dota 2',
+      service: 'Рейтинговая команда Dota 2',
       game: 'Dota 2',
       status: 'Ожидает',
       date: '2024-01-22',
       price: 4000,
-      tokensEarned: 200
+      tokensEarned: 200,
+      teamRating: 5.0,
+      duration: '4 часа'
     }
   ];
 
   const achievements = [
-    { name: 'Первая покупка', description: 'Совершили первый заказ', date: '2023-06-15', icon: Gift },
-    { name: 'Постоянный клиент', description: '10+ заказов', date: '2023-12-01', icon: Star },
-    { name: 'VIP клиент', description: '50+ заказов', date: '2024-01-10', icon: Trophy }
+    { name: 'Первая игра', description: 'Сыграли первый матч в команде', date: '2023-06-15', icon: Gift },
+    { name: 'Командный игрок', description: '10+ игр в команде', date: '2023-12-01', icon: Users },
+    { name: 'Мастер команды', description: '50+ игр в команде', date: '2024-01-10', icon: Trophy },
+    { name: 'MVP команды', description: 'Стали MVP в 5 играх', date: '2024-01-15', icon: Star }
   ];
+
+  const weeklyProgress = {
+    gamesPlayed: 12,
+    targetGames: 20,
+    hoursPlayed: 24,
+    targetHours: 40,
+    teamRating: 4.7,
+    winRate: 68
+  };
 
   if (!user) {
     return (
@@ -64,18 +81,55 @@ const UserDashboard = () => {
       <div className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center space-x-4 mb-4">
+          <div className="flex items-center space-x-4 mb-6">
             <div className="w-20 h-20 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center">
               <User className="w-10 h-10 text-white" />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white">{user.name}</h1>
               <p className="text-gray-400">{user.email}</p>
-              <Badge className="mt-2 bg-neon-purple/20 text-neon-purple border-neon-purple/30">
-                {user.level}
-              </Badge>
+              <div className="flex items-center space-x-2 mt-2">
+                <Badge className="bg-neon-purple/20 text-neon-purple border-neon-purple/30">
+                  {user.level}
+                </Badge>
+                <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                  Командный игрок
+                </Badge>
+              </div>
             </div>
           </div>
+
+          {/* Weekly Progress */}
+          <Card className="bg-dark-800 border-white/10 mb-6">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center">
+                <Target className="mr-2" size={20} />
+                Прогресс недели
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <p className="text-gray-400 text-sm">Игры</p>
+                <p className="text-white font-bold">{weeklyProgress.gamesPlayed}/{weeklyProgress.targetGames}</p>
+                <Progress value={(weeklyProgress.gamesPlayed / weeklyProgress.targetGames) * 100} className="mt-1" />
+              </div>
+              <div>
+                <p className="text-gray-400 text-sm">Часы</p>
+                <p className="text-white font-bold">{weeklyProgress.hoursPlayed}/{weeklyProgress.targetHours}ч</p>
+                <Progress value={(weeklyProgress.hoursPlayed / weeklyProgress.targetHours) * 100} className="mt-1" />
+              </div>
+              <div>
+                <p className="text-gray-400 text-sm">Рейтинг команды</p>
+                <p className="text-neon-purple font-bold">{weeklyProgress.teamRating}/5.0</p>
+                <Progress value={(weeklyProgress.teamRating / 5) * 100} className="mt-1" />
+              </div>
+              <div>
+                <p className="text-gray-400 text-sm">Винрейт</p>
+                <p className="text-green-400 font-bold">{weeklyProgress.winRate}%</p>
+                <Progress value={weeklyProgress.winRate} className="mt-1" />
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -94,10 +148,10 @@ const UserDashboard = () => {
             <Card className="bg-dark-800 border-white/10">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-2">
-                  <ShoppingBag className="w-8 h-8 text-neon-blue" />
+                  <Users className="w-8 h-8 text-neon-blue" />
                   <div>
                     <p className="text-2xl font-bold text-white">{user.totalOrders}</p>
-                    <p className="text-gray-400 text-sm">Всего заказов</p>
+                    <p className="text-gray-400 text-sm">Игр в команде</p>
                   </div>
                 </div>
               </CardContent>
@@ -106,10 +160,10 @@ const UserDashboard = () => {
             <Card className="bg-dark-800 border-white/10">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-8 h-8 text-neon-green" />
+                  <Clock className="w-8 h-8 text-neon-green" />
                   <div>
-                    <p className="text-2xl font-bold text-white">7</p>
-                    <p className="text-gray-400 text-sm">Месяцев с нами</p>
+                    <p className="text-2xl font-bold text-white">156</p>
+                    <p className="text-gray-400 text-sm">Часов в игре</p>
                   </div>
                 </div>
               </CardContent>
@@ -120,8 +174,8 @@ const UserDashboard = () => {
                 <div className="flex items-center space-x-2">
                   <Star className="w-8 h-8 text-yellow-500" />
                   <div>
-                    <p className="text-2xl font-bold text-white">4.9</p>
-                    <p className="text-gray-400 text-sm">Рейтинг</p>
+                    <p className="text-2xl font-bold text-white">4.8</p>
+                    <p className="text-gray-400 text-sm">Рейтинг игрока</p>
                   </div>
                 </div>
               </CardContent>
@@ -135,8 +189,8 @@ const UserDashboard = () => {
             <TabsTrigger value="overview" className="data-[state=active]:bg-neon-blue data-[state=active]:text-white">
               Обзор
             </TabsTrigger>
-            <TabsTrigger value="orders" className="data-[state=active]:bg-neon-blue data-[state=active]:text-white">
-              Заказы
+            <TabsTrigger value="sessions" className="data-[state=active]:bg-neon-blue data-[state=active]:text-white">
+              Игровые сессии
             </TabsTrigger>
             <TabsTrigger value="tokens" className="data-[state=active]:bg-neon-blue data-[state=active]:text-white">
               Токены
@@ -150,23 +204,27 @@ const UserDashboard = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="bg-dark-800 border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-white">Последние заказы</CardTitle>
+                  <CardTitle className="text-white">Последние игровые сессии</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {orders.slice(0, 3).map((order) => (
-                    <div key={order.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
+                  {teamSessions.slice(0, 3).map((session) => (
+                    <div key={session.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
                       <div>
-                        <h3 className="text-white font-medium">{order.service}</h3>
-                        <p className="text-gray-400 text-sm">{order.game}</p>
+                        <h3 className="text-white font-medium">{session.service}</h3>
+                        <p className="text-gray-400 text-sm">{session.game} • {session.duration}</p>
+                        <div className="flex items-center mt-1">
+                          <Star size={12} className="text-yellow-400 mr-1" />
+                          <span className="text-yellow-400 text-xs">{session.teamRating}</span>
+                        </div>
                       </div>
                       <Badge 
                         className={
-                          order.status === 'Выполнен' ? 'bg-green-500/20 text-green-400' :
-                          order.status === 'В процессе' ? 'bg-yellow-500/20 text-yellow-400' :
+                          session.status === 'Завершена' ? 'bg-green-500/20 text-green-400' :
+                          session.status === 'В процессе' ? 'bg-yellow-500/20 text-yellow-400' :
                           'bg-blue-500/20 text-blue-400'
                         }
                       >
-                        {order.status}
+                        {session.status}
                       </Badge>
                     </div>
                   ))}
@@ -187,11 +245,15 @@ const UserDashboard = () => {
                       <span className="text-gray-400">Потрачено всего:</span>
                       <span className="text-white">2,450 токенов</span>
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Заработано за неделю:</span>
+                      <span className="text-green-400">+500 токенов</span>
+                    </div>
                     <Button 
                       onClick={() => addBonusTokens(100)}
                       className="w-full bg-gradient-to-r from-neon-purple to-neon-blue"
                     >
-                      Получить бонус
+                      Получить дневной бонус
                     </Button>
                   </div>
                 </CardContent>
@@ -199,41 +261,45 @@ const UserDashboard = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="orders" className="space-y-6">
+          <TabsContent value="sessions" className="space-y-6">
             <Card className="bg-dark-800 border-white/10">
               <CardHeader>
-                <CardTitle className="text-white">История заказов</CardTitle>
+                <CardTitle className="text-white">История игровых сессий</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {orders.map((order) => (
-                  <div key={order.id} className="p-6 bg-dark-700 rounded-lg border border-white/10">
+                {teamSessions.map((session) => (
+                  <div key={session.id} className="p-6 bg-dark-700 rounded-lg border border-white/10">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <h3 className="text-white font-bold text-lg">{order.service}</h3>
-                        <p className="text-gray-400">{order.game}</p>
+                        <h3 className="text-white font-bold text-lg">{session.service}</h3>
+                        <p className="text-gray-400">{session.game} • {session.duration}</p>
+                        <div className="flex items-center mt-2">
+                          <Star size={16} className="text-yellow-400 mr-2" />
+                          <span className="text-yellow-400 font-medium">Рейтинг команды: {session.teamRating}</span>
+                        </div>
                       </div>
                       <Badge 
                         className={
-                          order.status === 'Выполнен' ? 'bg-green-500/20 text-green-400' :
-                          order.status === 'В процессе' ? 'bg-yellow-500/20 text-yellow-400' :
+                          session.status === 'Завершена' ? 'bg-green-500/20 text-green-400' :
+                          session.status === 'В процессе' ? 'bg-yellow-500/20 text-yellow-400' :
                           'bg-blue-500/20 text-blue-400'
                         }
                       >
-                        {order.status}
+                        {session.status}
                       </Badge>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                       <div>
                         <span className="text-gray-400">Дата:</span>
-                        <p className="text-white">{order.date}</p>
+                        <p className="text-white">{session.date}</p>
                       </div>
                       <div>
                         <span className="text-gray-400">Стоимость:</span>
-                        <p className="text-neon-blue font-bold">{order.price}₽</p>
+                        <p className="text-neon-blue font-bold">{session.price}₽</p>
                       </div>
                       <div>
                         <span className="text-gray-400">Получено токенов:</span>
-                        <p className="text-neon-purple font-bold">+{order.tokensEarned}</p>
+                        <p className="text-neon-purple font-bold">+{session.tokensEarned}</p>
                       </div>
                     </div>
                   </div>

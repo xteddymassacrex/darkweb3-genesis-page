@@ -1,8 +1,9 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, Shield, Star, ArrowRight } from 'lucide-react';
+import { Clock, Shield, Star, ArrowRight, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '@/context/UserContext';
 
 interface ServiceCardProps {
   service: {
@@ -21,9 +22,20 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
   const navigate = useNavigate();
+  const { addToCart } = useUser();
 
   const handleViewService = () => {
     navigate(`/service/${service.id}`);
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: service.id.toString(),
+      name: service.title,
+      price: parseInt(service.price.replace(/[^\d]/g, '')),
+      image: '🎮',
+      gameTitle: gameId || 'Неизвестная игра'
+    });
   };
 
   return (
@@ -66,6 +78,12 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
           <span className="text-sm">{service.duration}</span>
         </div>
 
+        {/* Team Size */}
+        <div className="flex items-center mb-4 text-neon-purple">
+          <Users size={16} className="mr-2" />
+          <span className="text-sm">Команда 5 игроков</span>
+        </div>
+
         {/* Features */}
         <div className="mb-6">
           <h4 className="text-white font-semibold mb-2 text-sm">Включено:</h4>
@@ -90,6 +108,7 @@ const ServiceCard = ({ service, gameId }: ServiceCardProps) => {
           </Button>
           <Button 
             variant="outline" 
+            onClick={handleAddToCart}
             className="w-full border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10"
           >
             В корзину

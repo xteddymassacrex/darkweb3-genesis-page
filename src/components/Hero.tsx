@@ -1,6 +1,7 @@
 
 import { ArrowRight, Play, Shield, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -15,30 +16,32 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-dark-800/50 border border-neon-blue/30 text-sm text-neon-blue mb-8 animate-glow">
             <Shield className="mr-2" size={16} />
-            100% Безопасные услуги
+            100% Командная игра
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="block text-white">Профессиональный</span>
-            <span className="block glow-text">Boost & Carry</span>
+            <span className="block text-white">Играй в команде</span>
+            <span className="block glow-text">с профессионалами</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Поднимите свой ранг в любимых играх с помощью топовых игроков. 
-            Быстро, безопасно и с гарантией результата.
+            Присоединяйся к команде профессиональных игроков. 
+            Играй вместе, развивайся и достигай новых высот в киберспорте.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white px-8 py-4 text-lg font-semibold transition-all duration-300 glow-border group"
-            >
-              Выбрать игру
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </Button>
+            <Link to="/game/valorant">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white px-8 py-4 text-lg font-semibold transition-all duration-300 glow-border group"
+              >
+                Найти команду
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Button>
+            </Link>
             
             <Button 
               variant="outline" 
@@ -58,7 +61,7 @@ const Hero = () => {
               </div>
               <div>
                 <div className="text-lg font-bold text-white">100%</div>
-                <div className="text-gray-400 text-sm">Безопасность</div>
+                <div className="text-gray-400 text-sm">Честная игра</div>
               </div>
             </div>
             <div className="flex items-center justify-center text-center">
@@ -66,8 +69,8 @@ const Hero = () => {
                 <Clock className="text-blue-400" size={24} />
               </div>
               <div>
-                <div className="text-lg font-bold text-white">15 мин</div>
-                <div className="text-gray-400 text-sm">Старт работы</div>
+                <div className="text-lg font-bold text-white">24/7</div>
+                <div className="text-gray-400 text-sm">Поиск команды</div>
               </div>
             </div>
             <div className="flex items-center justify-center text-center">
@@ -75,8 +78,8 @@ const Hero = () => {
                 <span className="text-purple-400 text-2xl">★</span>
               </div>
               <div>
-                <div className="text-lg font-bold text-white">50k+</div>
-                <div className="text-gray-400 text-sm">Заказов</div>
+                <div className="text-lg font-bold text-white">10k+</div>
+                <div className="text-gray-400 text-sm">Игроков</div>
               </div>
             </div>
           </div>
