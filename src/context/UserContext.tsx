@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface CartItem {
@@ -48,7 +47,7 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>({
     id: '1',
-    name: 'Алексей Гамер',
+    name: 'Alex Gamer',
     email: 'alex.gamer@example.com',
     bonusTokens: 1250,
     level: 'Pro Player',
