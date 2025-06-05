@@ -13,6 +13,7 @@ import JoinUs from "./pages/JoinUs";
 import UserDashboard from "./pages/UserDashboard";
 import SignIn from "./pages/SignIn";
 import SignOut from "./pages/SignOut";
+import Teams from "./pages/Teams";
 import NotFound from "./pages/NotFound";
 import CartDrawer from "./components/CartDrawer";
 
@@ -28,6 +29,7 @@ const App = () => (
           <CartDrawer />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/teams" element={<Teams />} />
             <Route path="/game/:gameId" element={<GameCategory />} />
             <Route path="/service/:serviceId" element={<ServiceDetail />} />
             <Route path="/checkout" element={<Checkout />} />

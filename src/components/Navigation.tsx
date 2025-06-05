@@ -11,7 +11,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Games', href: '#games' },
-    { name: 'Teams', href: '#services' },
+    { name: 'Teams', href: '/teams' },
     { name: 'Careers', href: '/join-us' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'FAQ', href: '#faq' },
