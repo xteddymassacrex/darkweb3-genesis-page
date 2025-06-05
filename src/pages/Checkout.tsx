@@ -46,7 +46,7 @@ const Checkout = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!contactMethod) {
-      alert('Пожалуйста, выберите удобный способ связи');
+      alert('Please select a preferred contact method');
       return;
     }
     // Process order
@@ -56,16 +56,16 @@ const Checkout = () => {
   const orderItems = [
     {
       id: 1,
-      title: "Boost до Platinum",
+      title: "Boost to Platinum",
       game: "Valorant",
-      price: "4,500₽",
-      originalPrice: "5,500₽",
-      duration: "3-5 дней"
+      price: "$45",
+      originalPrice: "$55",
+      duration: "3-5 days"
     }
   ];
 
-  const totalPrice = "4,500₽";
-  const savedAmount = "1,000₽";
+  const totalPrice = "$45";
+  const savedAmount = "$10";
 
   return (
     <div className="min-h-screen bg-dark-900">
@@ -81,7 +81,7 @@ const Checkout = () => {
               onClick={() => navigate(-1)}
             >
               <ArrowLeft size={20} className="mr-2" />
-              Назад
+              Back
             </Button>
           </div>
 
@@ -94,7 +94,7 @@ const Checkout = () => {
                   <CardHeader>
                     <CardTitle className="text-white flex items-center">
                       <MessageCircle className="mr-2" size={20} />
-                      Контактная информация
+                      Contact Information
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -112,7 +112,7 @@ const Checkout = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="firstName" className="text-white">Имя *</Label>
+                        <Label htmlFor="firstName" className="text-white">First Name *</Label>
                         <Input
                           id="firstName"
                           value={formData.firstName}
@@ -122,7 +122,7 @@ const Checkout = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="lastName" className="text-white">Фамилия *</Label>
+                        <Label htmlFor="lastName" className="text-white">Last Name *</Label>
                         <Input
                           id="lastName"
                           value={formData.lastName}
@@ -138,7 +138,7 @@ const Checkout = () => {
                 {/* Preferred Contact Method */}
                 <Card className="bg-dark-800/50 border-dark-600">
                   <CardHeader>
-                    <CardTitle className="text-white">Удобный способ связи *</CardTitle>
+                    <CardTitle className="text-white">Preferred Contact Method *</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <RadioGroup value={contactMethod} onValueChange={setContactMethod}>
@@ -172,7 +172,7 @@ const Checkout = () => {
                         <Label htmlFor="contactInfo" className="text-white">
                           {contactMethod === 'telegram' && 'Telegram username (@username)'}
                           {contactMethod === 'discord' && 'Discord username (username#1234)'}
-                          {contactMethod === 'whatsapp' && 'Номер WhatsApp (+7...)'}
+                          {contactMethod === 'whatsapp' && 'WhatsApp number (+1...)'}
                         </Label>
                         <Input
                           id="contactInfo"
@@ -182,7 +182,7 @@ const Checkout = () => {
                           placeholder={
                             contactMethod === 'telegram' ? '@username' :
                             contactMethod === 'discord' ? 'username#1234' :
-                            '+7 XXX XXX XX XX'
+                            '+1 XXX XXX XX XX'
                           }
                           required
                         />
@@ -194,12 +194,12 @@ const Checkout = () => {
                 {/* Billing Address */}
                 <Card className="bg-dark-800/50 border-dark-600">
                   <CardHeader>
-                    <CardTitle className="text-white">Платёжный адрес</CardTitle>
+                    <CardTitle className="text-white">Billing Address</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="country" className="text-white">Страна *</Label>
+                        <Label htmlFor="country" className="text-white">Country *</Label>
                         <Input
                           id="country"
                           value={formData.country}
@@ -209,7 +209,7 @@ const Checkout = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="city" className="text-white">Город *</Label>
+                        <Label htmlFor="city" className="text-white">City *</Label>
                         <Input
                           id="city"
                           value={formData.city}
@@ -221,7 +221,7 @@ const Checkout = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="address" className="text-white">Адрес *</Label>
+                      <Label htmlFor="address" className="text-white">Address *</Label>
                       <Input
                         id="address"
                         value={formData.address}
@@ -232,7 +232,7 @@ const Checkout = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="postalCode" className="text-white">Почтовый индекс</Label>
+                      <Label htmlFor="postalCode" className="text-white">Postal Code</Label>
                       <Input
                         id="postalCode"
                         value={formData.postalCode}
@@ -246,7 +246,7 @@ const Checkout = () => {
                 {/* Payment Method */}
                 <Card className="bg-dark-800/50 border-dark-600">
                   <CardHeader>
-                    <CardTitle className="text-white">Способ оплаты</CardTitle>
+                    <CardTitle className="text-white">Payment Method</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
@@ -255,7 +255,7 @@ const Checkout = () => {
                           <RadioGroupItem value="card" id="card" />
                           <Label htmlFor="card" className="text-white flex items-center cursor-pointer flex-1">
                             <CreditCard className="mr-2 text-blue-400" size={16} />
-                            Банковская карта
+                            Credit Card
                           </Label>
                         </div>
                         
@@ -263,23 +263,23 @@ const Checkout = () => {
                           <RadioGroupItem value="crypto" id="crypto" />
                           <Label htmlFor="crypto" className="text-white flex items-center cursor-pointer flex-1">
                             <span className="mr-2 text-yellow-400">₿</span>
-                            Криптовалюта
+                            Cryptocurrency
                           </Label>
                         </div>
                         
                         <div className="flex items-center space-x-2 p-4 border border-dark-600 rounded-lg">
-                          <RadioGroupItem value="qiwi" id="qiwi" />
-                          <Label htmlFor="qiwi" className="text-white flex items-center cursor-pointer flex-1">
-                            <span className="mr-2 text-orange-400">Q</span>
-                            QIWI
+                          <RadioGroupItem value="paypal" id="paypal" />
+                          <Label htmlFor="paypal" className="text-white flex items-center cursor-pointer flex-1">
+                            <span className="mr-2 text-blue-500">P</span>
+                            PayPal
                           </Label>
                         </div>
                         
                         <div className="flex items-center space-x-2 p-4 border border-dark-600 rounded-lg">
-                          <RadioGroupItem value="yoomoney" id="yoomoney" />
-                          <Label htmlFor="yoomoney" className="text-white flex items-center cursor-pointer flex-1">
-                            <span className="mr-2 text-purple-400">ЮM</span>
-                            ЮMoney
+                          <RadioGroupItem value="other" id="other" />
+                          <Label htmlFor="other" className="text-white flex items-center cursor-pointer flex-1">
+                            <span className="mr-2 text-purple-400">$</span>
+                            Other
                           </Label>
                         </div>
                       </div>
@@ -288,7 +288,7 @@ const Checkout = () => {
                     {paymentMethod === 'card' && (
                       <div className="mt-6 space-y-4">
                         <div>
-                          <Label htmlFor="cardNumber" className="text-white">Номер карты *</Label>
+                          <Label htmlFor="cardNumber" className="text-white">Card Number *</Label>
                           <Input
                             id="cardNumber"
                             value={formData.cardNumber}
@@ -301,7 +301,7 @@ const Checkout = () => {
                         
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="expiryDate" className="text-white">Срок действия *</Label>
+                            <Label htmlFor="expiryDate" className="text-white">Expiry Date *</Label>
                             <Input
                               id="expiryDate"
                               value={formData.expiryDate}
@@ -325,7 +325,7 @@ const Checkout = () => {
                         </div>
                         
                         <div>
-                          <Label htmlFor="cardName" className="text-white">Имя на карте *</Label>
+                          <Label htmlFor="cardName" className="text-white">Name on Card *</Label>
                           <Input
                             id="cardName"
                             value={formData.cardName}
@@ -342,14 +342,14 @@ const Checkout = () => {
                 {/* Additional Notes */}
                 <Card className="bg-dark-800/50 border-dark-600">
                   <CardHeader>
-                    <CardTitle className="text-white">Дополнительные пожелания</CardTitle>
+                    <CardTitle className="text-white">Additional Requirements</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Textarea
                       value={formData.additionalNotes}
                       onChange={(e) => handleInputChange('additionalNotes', e.target.value)}
                       className="bg-dark-700 border-dark-600 text-white"
-                      placeholder="Укажите любые особые пожелания или требования к выполнению заказа..."
+                      placeholder="Please specify any special requirements or preferences for your order..."
                       rows={4}
                     />
                   </CardContent>
@@ -361,7 +361,7 @@ const Checkout = () => {
             <div className="lg:col-span-1">
               <Card className="bg-dark-800/50 border-dark-600 sticky top-8">
                 <CardHeader>
-                  <CardTitle className="text-white">Ваш заказ</CardTitle>
+                  <CardTitle className="text-white">Your Order</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {orderItems.map((item) => (
@@ -385,15 +385,15 @@ const Checkout = () => {
 
                   <div className="space-y-2 pt-4">
                     <div className="flex justify-between text-gray-400">
-                      <span>Подытог:</span>
-                      <span>5,500₽</span>
+                      <span>Subtotal:</span>
+                      <span>$55</span>
                     </div>
                     <div className="flex justify-between text-green-400">
-                      <span>Скидка:</span>
+                      <span>Discount:</span>
                       <span>-{savedAmount}</span>
                     </div>
                     <div className="flex justify-between text-xl font-bold text-white border-t border-dark-600 pt-2">
-                      <span>Итого:</span>
+                      <span>Total:</span>
                       <span className="glow-text">{totalPrice}</span>
                     </div>
                   </div>
@@ -403,7 +403,7 @@ const Checkout = () => {
                     className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-lg py-3 mt-6"
                     onClick={handleSubmit}
                   >
-                    Оформить заказ
+                    Place Order
                   </Button>
 
                   {/* Trust Indicators */}
@@ -411,11 +411,11 @@ const Checkout = () => {
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
                         <Shield className="text-green-400 mx-auto mb-1" size={20} />
-                        <p className="text-xs text-gray-400">Безопасная оплата</p>
+                        <p className="text-xs text-gray-400">Secure Payment</p>
                       </div>
                       <div>
                         <Clock className="text-blue-400 mx-auto mb-1" size={20} />
-                        <p className="text-xs text-gray-400">Быстрое выполнение</p>
+                        <p className="text-xs text-gray-400">Fast Delivery</p>
                       </div>
                     </div>
                   </div>
